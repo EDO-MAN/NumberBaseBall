@@ -52,31 +52,38 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox1.Location = new System.Drawing.Point(203, 226);
+            this.textBox1.Location = new System.Drawing.Point(213, 226);
+            this.textBox1.MaxLength = 1;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(25, 21);
             this.textBox1.TabIndex = 0;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textBox2.Location = new System.Drawing.Point(234, 226);
+            this.textBox2.MaxLength = 1;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(25, 21);
             this.textBox2.TabIndex = 1;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // textBox3
             // 
             this.textBox3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox3.Location = new System.Drawing.Point(265, 226);
+            this.textBox3.Location = new System.Drawing.Point(255, 226);
+            this.textBox3.MaxLength = 1;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(25, 21);
             this.textBox3.TabIndex = 2;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // textBox4
             // 
             this.textBox4.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox4.Location = new System.Drawing.Point(296, 226);
+            this.textBox4.Location = new System.Drawing.Point(276, 226);
+            this.textBox4.MaxLength = 1;
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(25, 21);
             this.textBox4.TabIndex = 3;
@@ -154,18 +161,20 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("배찌체", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label6.Location = new System.Drawing.Point(114, 64);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(54, 13);
+            this.label6.Size = new System.Drawing.Size(85, 22);
             this.label6.TabIndex = 12;
             this.label6.Text = "시도 횟수 :";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("배찌체", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label7.Location = new System.Drawing.Point(186, 64);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(14, 13);
+            this.label7.Size = new System.Drawing.Size(20, 22);
             this.label7.TabIndex = 13;
             this.label7.Text = "0";
             // 
@@ -215,6 +224,7 @@
             // 
             this.textBox5.BackColor = System.Drawing.SystemColors.Window;
             this.textBox5.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox5.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBox5.Location = new System.Drawing.Point(206, 264);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(115, 26);

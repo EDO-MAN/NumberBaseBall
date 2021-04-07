@@ -16,8 +16,7 @@ namespace NumberBaseball
         int strike = 0;
         int ball = 0;
         static Random random = new Random();
-        static int randomNumber = random.Next(1000, 10000);
-     
+        public int randomNumber;
 
         public Form1()
         {
@@ -26,22 +25,75 @@ namespace NumberBaseball
 
         private void Form1_Load(object sender, EventArgs e)
         {
+          
         }
         private void button1_Click(object sender, EventArgs e)
         {
             label7.Text = "" + ++tryCount;
 
+            if (textBox1.Text == Convert.ToString(randomNumber).Substring(0,1))
+            {
+                strike++;
+            }
+            if (textBox2.Text == Convert.ToString(randomNumber).Substring(1, 1))
+            {
+                strike++;
+            }
+            if (textBox3.Text == Convert.ToString(randomNumber).Substring(2, 1))
+            {
+                strike++;
+            }
+            if (textBox4.Text == Convert.ToString(randomNumber).Substring(3, 1))
+            {
+                strike++;
+            }
+            //6015
+            if (Convert.ToString(randomNumber).Contains(textBox1.Text) &&
+                textBox1.Text != Convert.ToString(randomNumber).Substring(0, 1))
+            {
+                ball++;
+            }
+            if (Convert.ToString(randomNumber).Contains(textBox2.Text) &&
+                textBox2.Text != Convert.ToString(randomNumber).Substring(1, 1))
+            {
+                ball++;
+            }
+            if (Convert.ToString(randomNumber).Contains(textBox3.Text) &&
+                textBox3.Text != Convert.ToString(randomNumber).Substring(2, 1))
+            {
+                ball++;
+            }
+            if (Convert.ToString(randomNumber).Contains(textBox4.Text) &&
+                textBox4.Text != Convert.ToString(randomNumber).Substring(3, 1))
+            {
+                ball++;
+            }
+
+            //성공시
+            if ((textBox1.Text + textBox2.Text + textBox3.Text + textBox4.Text)
+                == Convert.ToString(randomNumber))
+            {
+                //textBox5.BackColor = Color.White;
+                textBox5.Text = Convert.ToString(randomNumber);
+                MessageBox.Show("!VICTORY!");
+                //Application.Restart();
+            }
+            
+            //실행 저장
             record.Items.Add(
                 (textBox1.Text + textBox2.Text + textBox3.Text + textBox4.Text)
-                + ":" + strike + "S" + " " + ball + "B");
+                + ":" + Convert.ToString(strike) + "S" + " " + Convert.ToString(ball) + "B");
 
-            if ((textBox1.Text + textBox2.Text + textBox3.Text + textBox4.Text)
-                == textBox5.Text)
-            {
-                textBox5.BackColor = Color.White;
-                MessageBox.Show("!VICTORY!");
-                Application.Restart();
-            }
+            textBox1.Text = textBox2.Text = textBox3.Text = textBox4.Text = null;
+            label4.Text = "" + strike;
+            label5.Text = "" + ball;
+
+            //정답 못 맞출 시 값 초기화
+            if (strike != 4)
+                strike = 0;
+
+            if (ball != 3)
+                ball = 0;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -51,18 +103,52 @@ namespace NumberBaseball
 
         private void button3_Click(object sender, EventArgs e)
         {
-            textBox5.Text = Convert.ToString(randomNumber);
-            record.Items.Add(textBox5.Text);
-            if (textBox5.Text.Contains("1111") || textBox5.Text.Contains("2222") || textBox5.Text.Contains("3333") ||
-                textBox5.Text.Contains("4444") || textBox5.Text.Contains("5555") || textBox5.Text.Contains("6666") ||
-                textBox5.Text.Contains("7777") || textBox5.Text.Contains("8888") || textBox5.Text.Contains("9999"))
+            //랜덤 생성
+            ran();
+            string str = Convert.ToString(randomNumber);
+            //textBox5.Text = Convert.ToString(randomNumber);
+            MessageBox.Show(str);
+
+            for (int i = 0; i < str.Length - 1; i++)
             {
-                MessageBox.Show("중복 숫자로 인한 재시작");
-                Application.Restart();
+                for(int j = i + 1; j < str.Length; j++)
+                {
+                    if (str[i] == str[j])
+                    {
+                        MessageBox.Show("중복 숫자로 인한 재시작");
+                        button3_Click(sender, e);
+                    }
+                }
             }
-            else
-                textBox5.BackColor = Color.Black;
-                button3.Enabled = false;
+            button3.Enabled = false;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if(textBox1.Text.Length == 1)
+            {
+                this.ActiveControl = textBox2;
+            }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox2.Text.Length == 1)
+            {
+                this.ActiveControl = textBox3;
+            }
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox3.Text.Length == 1)
+            {
+                this.ActiveControl = textBox4;
+            }
+        }
+        private void ran()
+        {
+            randomNumber = random.Next(1000, 10000);
         }
     }
 }
