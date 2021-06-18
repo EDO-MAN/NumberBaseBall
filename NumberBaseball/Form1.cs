@@ -147,10 +147,6 @@ namespace NumberBaseball
                 this.ActiveControl = textBox4;
             }
         }
-        private void ran()
-        {
-            randomNumber = random.Next(1000, 10000);
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -167,8 +163,10 @@ namespace NumberBaseball
                     if (str[i] == str[j])
                     {
                         MessageBox.Show("중복 숫자로 인한 재시작");
-                        button_activate(sender, e);
-                        Application.Restart();                    }
+
+                        Application.Restart();
+                    }
+                    
                 }
             }
 
